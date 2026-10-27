@@ -1,0 +1,56 @@
+name: P-Body
+version: 1.0.0
+author: P-Body Developer
+description: >
+  P-Body: A biologically-inspired neural network with human-like psychological processes.
+  Features: memory consolidation, emotional states, language processing, recursive self-operation,
+  and LED matrix expressions.
+board: arduino_uno_q
+category: AI/ML
+license: MIT
+
+# Dragonwing (Python) configuration
+dragonwing:
+  python_version: "3.9"
+  entry_point: python/pbody_integration.py
+  dependencies:
+    - numpy
+  modules:
+    - python/pbrain.py
+    - python/pbody_memory.py
+    - python/pbody_biological.py
+    - python/pbody_language.py
+    - python/pbody_recursive.py
+    - python/pbody_integration.py
+
+# Microcontroller (Sketch) configuration
+microcontroller:
+  sketch_dir: sketch
+  entry_point: sketch.ino
+  headers:
+    - pbody_network.h
+    - pbody_led_matrix.h
+  additional_sketches:
+    - pbody_led_example.ino
+  default_profile: default
+  profiles:
+    default:
+      fqbn: arduino:zephyr:unoq
+      platforms:
+        - platform: arduino:zephyr
+
+# Communication between chips
+communication:
+  protocol: serial
+  baud_rate: 115200
+  message_format: json
+
+# Features
+features:
+  - neural_network: 9-region brain architecture (351 neurons)
+  - memory: short-term and long-term with consolidation
+  - emotions: 8 emotional states with behavioral effects
+  - language: narrow language model with Broca's area
+  - recursion: self-monitoring and metacognition
+  - expressions: LED matrix face expressions
+  - sleep: 5-phase sleep cycle for memory optimization
